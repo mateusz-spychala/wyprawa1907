@@ -9,7 +9,7 @@ const getBrandContent = (id?: number) => {
 	if (!id || id < dziennik29Length) {
 		return (
 			<>
-				<img src={whiteLogo} alt="Dziennik 29" />
+				<img src={whiteLogo} alt="Wyprawa 1907 Zakazane Kopalnie" />
 			</>
 		);
 	}

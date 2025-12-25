@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
 	};
 
 	if (command !== 'serve') {
-		config.base = '/dziennik29.pl/';
+		config.base = '/wyprawa1907/';
 	}
 
 	return config;

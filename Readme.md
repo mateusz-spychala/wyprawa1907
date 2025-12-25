@@ -1,6 +1,6 @@
-# 📘 Dziennik 29
+# 📘 Wyprawa 1907
 
-Dziennik29.pl - autorska wersja strony z hasłami, stworzona jako alternatywa dla oryginalnej witryny, która obecnie jest niedostępna. Projekt ma na celu umożliwienie kontynuacji rozwiązywania zagadek z książki Dziennik 29, mimo braku dostępu do oficjalnego źródła.
+Wyprawa1907 - autorska wersja strony z hasłami, stworzona jako alternatywa dla oryginalnej witryny, która obecnie jest niedostępna. Projekt ma na celu umożliwienie kontynuacji rozwiązywania zagadek z książki Dziennik 29, mimo braku dostępu do oficjalnego źródła.
 
 Hasła i podpowiedzi zostały pobrane z archiwalnej strony internetowej. Klucze zostały uzupełnione na podstawie wcześniej zapisanych odpowiedzi użytkowników, co nie daje 100% gwarancji poprawności danych.
 
@@ -8,7 +8,7 @@ Hasła i podpowiedzi zostały pobrane z archiwalnej strony internetowej. Klucze 
 
 ## 🌐 Interaktywna strona internetowa
 
-👉 [`https://ghornon.github.io/dziennik29.pl/`](https://ghornon.github.io/dziennik29.pl/)
+👉 [`https://mateusz-spychala.github.io/wyprawa1907/`](https://mateusz-spychala.github.io/wyprawa1907/)
 
 ---
 
@@ -20,8 +20,8 @@ Aby zobaczyć dodatkowe strony związane z zagadkami, zamień adres:
 
 na jeden z poniższych:
 
--   [`https://ghornon.github.io/dziennik29.pl/#{klucz}`](https://ghornon.github.io/dziennik29.pl/#)
--   [`https://ghornon.github.io/dziennik29.pl/#/{klucz}`](https://ghornon.github.io/dziennik29.pl/#/)
+-   [`https://mateusz-spychala.github.io/wyprawa1907/#{klucz}`](https://mateusz-spychala.github.io/wyprawa1907/#)
+-   [`https://mateusz-spychala.github.io/wyprawa1907/#/{klucz}`](https://mateusz-spychala.github.io/wyprawa1907/#/)
 
 Następnie doklej odpowiedni **klucz** (np. nazwę strony, klucz z zagadki itp.).
 
@@ -33,7 +33,7 @@ Zamiast:
 
 użyj:
 
-`https://ghornon.github.io/dziennik29.pl/#/notatki`
+`https://mateusz-spychala.github.io/wyprawa1907/#/notatki`
 
 ---
 

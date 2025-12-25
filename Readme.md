@@ -4,7 +4,7 @@ Wyprawa1907 - autorska wersja strony z hasłami, stworzona jako alternatywa dla 
 
 Hasła i podpowiedzi zostały pobrane z archiwalnej strony internetowej. Klucze zostały uzupełnione na podstawie wcześniej zapisanych odpowiedzi użytkowników, co nie daje 100% gwarancji poprawności danych.
 
-**⚠️ Zagadek nr 51,92,143 nie da się rozwiązać bez orginalnej strony internetowej**
+**⚠️ Zagadek nr 51,92,143 nie da się rozwiązać bez oryginalnej strony internetowej**
 
 ## 🌐 Interaktywna strona internetowa
 

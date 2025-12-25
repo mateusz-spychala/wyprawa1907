@@ -5,7 +5,7 @@ import Notes from './pages/Notes';
 
 function App() {
 	// Implementation for gh-pages
-	// <HashRouter basename={import.meta.env.DEV ? '/' : '/dziennik29.pl/'}>
+	// <HashRouter basename={import.meta.env.DEV ? '/' : '/wyprawa1907/'}>
 	return (
 		<HashRouter>
 			<Routes>

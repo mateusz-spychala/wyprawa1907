@@ -6,4 +6,4 @@ services:
         ports:
             - '4000:4000'
         volumes:
-            - ./dist:/usr/src/app/dziennik29.pl/
+            - ./dist:/usr/src/app/wyprawa1907/

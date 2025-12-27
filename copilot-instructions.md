@@ -12,6 +12,40 @@ React TypeScript application built with Vite for an interactive story-driven gam
 - **Package Manager**: npm (scripts configured for npm, not bun)
 - **Deployment**: GitHub Pages (gh-pages)
 
+## Documentation Access
+**Use Context7 MCP for version-specific or new feature implementation.**
+
+When implementing new features, troubleshooting version-specific issues, or working with unfamiliar APIs:
+
+1. Call `mcp_io_github_ups_resolve-library-id` with the library name:
+   ```json
+   { "libraryName": "react" }
+   ```
+
+2. Use the returned Context7-compatible library ID with `mcp_io_github_ups_get-library-docs`:
+   ```json
+   { 
+     "context7CompatibleLibraryID": "/facebook/react",
+     "mode": "code",
+     "topic": "hooks",
+     "page": 1
+   }
+   ```
+   - **mode**: `"code"` for API references/examples, `"info"` for concepts/architecture
+   - **topic**: Optional - focus on specific area (e.g., "hooks", "routing", "state")
+   - **page**: Optional (1-10) - for pagination if initial results insufficient
+
+3. If library not found or docs unavailable, fall back to general knowledge with caution about version differences
+
+**Project libraries**:
+- React, Vite, React Router DOM, Zustand, TypeScript, Immer, Sass
+
+**When NOT to use Context7**:
+- Basic React patterns already established in the codebase
+- Simple TypeScript questions
+- General programming concepts
+- Quick clarifications that don't require version-specific details
+
 ## TypeScript Configuration
 The project uses TypeScript project references with strict mode enabled:
 - `strict: true`

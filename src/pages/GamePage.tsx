@@ -5,11 +5,13 @@ import wyprawa1907_ZakazaneKopalnieData from '../data/wyprawa1907_ZakazaneKopaln
 import dziennik29_PrzebudzenieData from '../data/dziennik29_Przebudzenie.json';
 import dziennik29_WersjaPierwszaData from '../data/dziennik29_WersjaPierwsza.json';
 import dziennik29_ZapomnienieData from '../data/dziennik29_Zapomnienie.json';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header.tsx';
 import { useGameStore, type IKey, type DatasetName } from '../store/GameStore.tsx';
 
-const VALID_DATASETS: DatasetName[] = ['wyprawa1907_ZakazaneKopalnie', 'dziennik29_Przebudzenie', 'dziennik29_WersjaPierwsza', 'dziennik29_Zapomnienie'];
+const VALID_DATASETS: ValidDatasetName[] = ['wyprawa1907_ZakazaneKopalnie', 'dziennik29_Przebudzenie', 'dziennik29_WersjaPierwsza', 'dziennik29_Zapomnienie'];
+
+type ValidDatasetName = Exclude<DatasetName, ''>;
 
 const GamePage = () => {
 	const { dataset, pageId } = useParams();
@@ -18,7 +20,6 @@ const GamePage = () => {
 	const setValue = useGameStore((state) => state.setValue);
 	const setDataset = useGameStore((state) => state.setDataset);
 	const setSelectedDataset = useGameStore((state) => state.setSelectedDataset);
-	const navigate = useNavigate();
 
 	const datasetsLoaded = useRef(false);
 
@@ -37,25 +38,30 @@ const GamePage = () => {
 	useEffect(() => {
 		if (!datasetsLoaded.current) return;
 
-		// Handle dataset from URL or redirect to default
-		if (dataset && VALID_DATASETS.includes(dataset as DatasetName)) {
-			if (dataset !== selectedDataset) {
-				setSelectedDataset(dataset as DatasetName);
-			}
-		} else {
-			// Redirect to default dataset if URL is invalid or missing
-			navigate(`/${selectedDataset}/${pageId || '0'}`, { replace: true });
-			return;
-		}
+		// Handle dataset from URL
+		if (dataset && VALID_DATASETS.includes(dataset as ValidDatasetName)) {
+			const validDataset = dataset as ValidDatasetName;
+			const targetPage = Number(pageId);
+			const validPage = !isNaN(targetPage) && targetPage >= 0 ? targetPage : 0;
 
-		// Update current page
-		const id = Number(pageId);
-		if (!isNaN(id) && id >= 0 && id < totalPages) {
-			setValue('currentPage', id);
-		} else {
-			setValue('currentPage', 0);
+			if (validDataset !== selectedDataset) {
+				// When switching datasets or initializing from URL, pass the target page
+				setSelectedDataset(validDataset, validPage);
+			} else if (totalPages > 0) {
+				// Update current page when navigating within same dataset
+				if (validPage < totalPages) {
+					setValue('currentPage', validPage);
+				} else {
+					setValue('currentPage', 0);
+				}
+			}
+		} else if (!dataset || dataset === '') {
+			// No dataset in URL - stay on empty state to show "Wybierz zestaw"
+			// Don't redirect, let user select
 		}
-	}, [dataset, pageId, selectedDataset, totalPages, setSelectedDataset, setValue, navigate]);
+		// navigate is stable from React Router and doesn't need to be in deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [dataset, pageId, selectedDataset, totalPages, setSelectedDataset, setValue]);
 
 	return (
 		<>

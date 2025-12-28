@@ -4,6 +4,7 @@ import type { DatasetName } from '../store/GameStore';
 import { DatasetSelector } from './DatasetSelector';
 
 const DATASET_DISPLAY: Record<DatasetName, { title: string; subtitle: string }> = {
+	'': { title: '', subtitle: '' },
 	wyprawa1907_ZakazaneKopalnie: { title: 'Wyprawa 1907', subtitle: 'Zakazane Kopalnie' },
 	dziennik29_Przebudzenie: { title: 'Dziennik 29', subtitle: 'Przebudzenie' },
 	dziennik29_WersjaPierwsza: { title: 'Dziennik 29', subtitle: 'Wersja Pierwsza' },
@@ -12,6 +13,8 @@ const DATASET_DISPLAY: Record<DatasetName, { title: string; subtitle: string }> 
 
 const getBrandContent = (dataset: DatasetName) => {
 	const config = DATASET_DISPLAY[dataset];
+	
+	if (!config.title) return null;
 	
 	return (
 		<>
@@ -29,9 +32,17 @@ const Header = () => {
 	return (
 		<header className="header">
 			<div className="nav">
-				<Link className="brand" to={`/${selectedDataset}/0`} aria-label="Strona główna">
-					{getBrandContent(selectedDataset)}
-				</Link>
+				{selectedDataset ? (
+					<Link className="brand" to={`/${selectedDataset}/0`} aria-label="Strona główna">
+						{getBrandContent(selectedDataset)}
+					</Link>
+				) : (
+					<div className="brand">
+						<span className="line">
+							<h2>Wybierz zestaw gry</h2>
+						</span>
+					</div>
+				)}
 				<DatasetSelector />
 			</div>
 		</header>

@@ -10,7 +10,7 @@ export interface IKey {
 	error?: string;
 }
 
-export type DatasetName = 'wyprawa1907_ZakazaneKopalnie' | 'dziennik29_Przebudzenie' | 'dziennik29_WersjaPierwsza' | 'dziennik29_Zapomnienie';
+export type DatasetName = 'wyprawa1907_ZakazaneKopalnie' | 'dziennik29_Przebudzenie' | 'dziennik29_WersjaPierwsza' | 'dziennik29_Zapomnienie' | '';
 
 interface IGameData {
 	currentPage: number;
@@ -19,7 +19,7 @@ interface IGameData {
 	result: string;
 	correctAnswer: boolean;
 	selectedDataset: DatasetName;
-	datasets: Record<DatasetName, Array<IKey>>;
+	datasets: Record<Exclude<DatasetName, ''>, Array<IKey>>;
 }
 
 const initialState: IGameData = {
@@ -28,7 +28,7 @@ const initialState: IGameData = {
 	totalPages: 0,
 	result: '',
 	correctAnswer: false,
-	selectedDataset: 'wyprawa1907_ZakazaneKopalnie',
+	selectedDataset: '',
 	datasets: {
 		wyprawa1907_ZakazaneKopalnie: [],
 		dziennik29_Przebudzenie: [],
@@ -38,8 +38,8 @@ const initialState: IGameData = {
 };
 
 interface IGameStore extends IGameData {
-	setDataset: (datasetName: DatasetName, data: Array<IKey>) => void;
-	setSelectedDataset: (datasetName: DatasetName) => void;
+	setDataset: (datasetName: Exclude<DatasetName, ''>, data: Array<IKey>) => void;
+	setSelectedDataset: (datasetName: Exclude<DatasetName, ''>, initialPage?: number) => void;
 	setValue: <K extends keyof IGameStore>(key: K, value: IGameStore[K]) => void;
 	reset: () => void;
 }
@@ -53,12 +53,12 @@ export const useGameStore = create<IGameStore>()(
 					draft.datasets[datasetName] = data;
 				});
 			},
-			setSelectedDataset: (datasetName) => {
+			setSelectedDataset: (datasetName, initialPage = 0) => {
 				set((draft) => {
 					draft.selectedDataset = datasetName;
 					draft.keys = draft.datasets[datasetName];
 					draft.totalPages = draft.datasets[datasetName].length;
-					draft.currentPage = 0;
+					draft.currentPage = initialPage;
 					draft.result = '';
 					draft.correctAnswer = false;
 				});

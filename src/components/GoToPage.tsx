@@ -5,6 +5,7 @@ import { useGameStore } from '../store/GameStore';
 const GoToPage = () => {
 	const currentPage = useGameStore((state) => state.currentPage);
 	const totalPages = useGameStore((state) => state.totalPages);
+	const selectedDataset = useGameStore((state) => state.selectedDataset);
 	const setValue = useGameStore((state) => state.setValue);
 	const [goToPage, setGoToPage] = useState<number | string>();
 	const navigate = useNavigate();
@@ -38,7 +39,7 @@ const GoToPage = () => {
 						val = Math.max(0, Math.min(val, totalPages - 1));
 						setValue('currentPage', val);
 						setGoToPage(val);
-						navigate(`/${val}`);
+						navigate(`/${selectedDataset}/${val}`);
 					}
 				}}
 				aria-label="Przejdź do strony"

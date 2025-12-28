@@ -9,12 +9,16 @@ export interface IKey {
 	error?: string;
 }
 
+export type DatasetName = 'dziennik29' | 'dziennik29Przebudzenie' | 'dziennik29Zapomnienie';
+
 interface IGameData {
 	currentPage: number;
 	keys: Array<IKey>;
 	totalPages: number;
 	result: string;
 	correctAnswer: boolean;
+	selectedDataset: DatasetName;
+	datasets: Record<DatasetName, Array<IKey>>;
 }
 
 const initialState: IGameData = {
@@ -23,10 +27,17 @@ const initialState: IGameData = {
 	totalPages: 0,
 	result: '',
 	correctAnswer: false,
+	selectedDataset: 'dziennik29',
+	datasets: {
+		dziennik29: [],
+		dziennik29Przebudzenie: [],
+		dziennik29Zapomnienie: [],
+	},
 };
 
 interface IGameStore extends IGameData {
-	setKeys: (keys: Array<IKey>) => void;
+	setDataset: (datasetName: DatasetName, data: Array<IKey>) => void;
+	setSelectedDataset: (datasetName: DatasetName) => void;
 	setValue: <K extends keyof IGameStore>(key: K, value: IGameStore[K]) => void;
 	reset: () => void;
 }
@@ -35,10 +46,19 @@ export const useGameStore = create<IGameStore>()(
 	devtools(
 		immer((set) => ({
 			...initialState,
-			setKeys: (keys) => {
+			setDataset: (datasetName, data) => {
 				set((draft) => {
-					draft.keys = keys;
-					draft.totalPages = keys.length;
+					draft.datasets[datasetName] = data;
+				});
+			},
+			setSelectedDataset: (datasetName) => {
+				set((draft) => {
+					draft.selectedDataset = datasetName;
+					draft.keys = draft.datasets[datasetName];
+					draft.totalPages = draft.datasets[datasetName].length;
+					draft.currentPage = 0;
+					draft.result = '';
+					draft.correctAnswer = false;
 				});
 			},
 			setValue: (key, value) => {

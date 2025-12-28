@@ -13,34 +13,17 @@ React TypeScript application built with Vite for an interactive story-driven gam
 - **Deployment**: GitHub Pages (gh-pages)
 
 ## Documentation Access
-**Use Context7 MCP for version-specific or new feature implementation.**
+**Prefer official, version-specific documentation for libraries and tools.**
 
 When implementing new features, troubleshooting version-specific issues, or working with unfamiliar APIs:
-
-1. Call `mcp_io_github_ups_resolve-library-id` with the library name:
-   ```json
-   { "libraryName": "react" }
-   ```
-
-2. Use the returned Context7-compatible library ID with `mcp_io_github_ups_get-library-docs`:
-   ```json
-   { 
-     "context7CompatibleLibraryID": "/facebook/react",
-     "mode": "code",
-     "topic": "hooks",
-     "page": 1
-   }
-   ```
-   - **mode**: `"code"` for API references/examples, `"info"` for concepts/architecture
-   - **topic**: Optional - focus on specific area (e.g., "hooks", "routing", "state")
-   - **page**: Optional (1-10) - for pagination if initial results insufficient
-
-3. If library not found or docs unavailable, fall back to general knowledge with caution about version differences
+- If your environment provides Context7 MCP (or a similar documentation tool), use it to look up the official docs for the relevant library and version.
+- Otherwise, consult the library’s official documentation site and clearly note any version assumptions you are making.
+- When precise versioned docs are not available, fall back to general knowledge but be cautious about potential version differences.
 
 **Project libraries**:
 - React, Vite, React Router DOM, Zustand, TypeScript, Immer, Sass
 
-**When NOT to use Context7**:
+**When NOT to use external documentation tools (including Context7 MCP)**:
 - Basic React patterns already established in the codebase
 - Simple TypeScript questions
 - General programming concepts

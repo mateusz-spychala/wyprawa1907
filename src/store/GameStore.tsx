@@ -48,7 +48,9 @@ export const useGameStore = create<IGameStore>()(
 					});
 				},
 				reset: () => {
-					set({ ...initialState });
+					set((draft) => {
+						Object.assign(draft, initialState);
+					});
 				},
 			})),
 			{

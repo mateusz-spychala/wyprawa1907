@@ -3,9 +3,10 @@ import type { DatasetName } from '../store/GameStore';
 import { useNavigate } from 'react-router-dom';
 
 const DATASET_DISPLAY_NAMES: Record<DatasetName, string> = {
-	dziennik29: 'Dziennik 29',
-	dziennik29Przebudzenie: 'Przebudzenie',
-	dziennik29Zapomnienie: 'Zapomnienie',
+	wyprawa1907_ZakazaneKopalnie: 'Zakazane Kopalnie',
+	dziennik29_Przebudzenie: 'Przebudzenie',
+	dziennik29_WersjaPierwsza: 'Wersja Pierwsza',
+	dziennik29_Zapomnienie: 'Zapomnienie',
 };
 
 export const DatasetSelector = () => {

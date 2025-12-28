@@ -1,32 +1,22 @@
 import { Link } from 'react-router-dom';
-import whiteLogo from '../assets/whiteLogo.png';
 import { useGameStore } from '../store/GameStore';
 import type { DatasetName } from '../store/GameStore';
 import { DatasetSelector } from './DatasetSelector';
 
-const DATASET_DISPLAY: Record<DatasetName, { subtitle?: string; showLogo: boolean }> = {
-	dziennik29: { showLogo: true },
-	dziennik29Przebudzenie: { subtitle: 'Przebudzenie', showLogo: false },
-	dziennik29Zapomnienie: { subtitle: 'Zapomnienie', showLogo: false },
+const DATASET_DISPLAY: Record<DatasetName, { title: string; subtitle: string }> = {
+	wyprawa1907_ZakazaneKopalnie: { title: 'Wyprawa 1907', subtitle: 'Zakazane Kopalnie' },
+	dziennik29_Przebudzenie: { title: 'Dziennik 29', subtitle: 'Przebudzenie' },
+	dziennik29_WersjaPierwsza: { title: 'Dziennik 29', subtitle: 'Wersja Pierwsza' },
+	dziennik29_Zapomnienie: { title: 'Dziennik 29', subtitle: 'Zapomnienie' },
 };
 
 const getBrandContent = (dataset: DatasetName) => {
 	const config = DATASET_DISPLAY[dataset];
 	
-	if (config.showLogo) {
-		return (
-			<>
-				<img src={whiteLogo} alt="Wyprawa 1907 Zakazane Kopalnie" />
-			</>
-		);
-	}
-
 	return (
 		<>
 			<span className="line">
-				<h2>D</h2>
-				<h3>ziennik</h3>
-				<h2>29</h2>
+				<h2>{config.title}</h2>
 			</span>
 			<h4 className="subtitle">{config.subtitle}</h4>
 		</>

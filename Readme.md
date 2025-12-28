@@ -6,40 +6,68 @@ Hasła i podpowiedzi zostały pobrane z archiwalnej strony internetowej. Klucze 
 
 **⚠️ Zagadek nr 51,92,143 nie da się rozwiązać bez oryginalnej strony internetowej**
 
+## ✨ Funkcje
+
+- 🎮 **4 zestawy zagadek:** Wyprawa 1907 (Zakazane Kopalnie), Dziennik 29 (Przebudzenie, Wersja Pierwsza, Zapomnienie)
+- 🔄 **Przełączanie między zestawami:** Wybierz edycję książki z menu rozwijanego w nagłówku
+- 🔍 **System podpowiedzi i rozwiązań:** Moduły z potwierdzeniem przed wyświetleniem spoilerów
+- 📍 **Nawigacja:** Paginacja, przejście do konkretnej strony, linki w URL
+- ⌨️ **Obsługa klawiatury:** Naciśnij Enter aby sprawdzić odpowiedź
+- 🎨 **Interfejs:** Vintage design z teksturą papieru
+- 📱 **Responsywny:** Działa na wszystkich urządzeniach
+
 ## 🌐 Interaktywna strona internetowa
 
 👉 [`https://mateusz-spychala.github.io/wyprawa1907/`](https://mateusz-spychala.github.io/wyprawa1907/)
 
 ---
 
-## 🔍 Dostęp do ukrytych stron zagadek
+## 🔄 Przełączanie między zestawami zagadek
 
-Aby zobaczyć dodatkowe strony związane z zagadkami, zamień adres:
+Aplikacja obsługuje 4 różne zestawy zagadek. Wybierz zestaw z menu rozwijanego w nagłówku lub użyj bezpośredniego linku:
 
-`https://dziennik29.pl/{klucz}`
+- **Wyprawa 1907 - Zakazane Kopalnie:**  
+  `https://mateusz-spychala.github.io/wyprawa1907/#/wyprawa1907_ZakazaneKopalnie/0`
 
-na jeden z poniższych:
+- **Dziennik 29 - Przebudzenie:**  
+  `https://mateusz-spychala.github.io/wyprawa1907/#/dziennik29_Przebudzenie/0`
 
--   [`https://mateusz-spychala.github.io/wyprawa1907/#{klucz}`](https://mateusz-spychala.github.io/wyprawa1907/#)
--   [`https://mateusz-spychala.github.io/wyprawa1907/#/{klucz}`](https://mateusz-spychala.github.io/wyprawa1907/#/)
+- **Dziennik 29 - Wersja Pierwsza:**  
+  `https://mateusz-spychala.github.io/wyprawa1907/#/dziennik29_WersjaPierwsza/0`
 
-Następnie doklej odpowiedni **klucz** (np. nazwę strony, klucz z zagadki itp.).
+- **Dziennik 29 - Zapomnienie:**  
+  `https://mateusz-spychala.github.io/wyprawa1907/#/dziennik29_Zapomnienie/0`
 
-### 🧪 Przykład
-
-Zamiast:
-
-`https://dziennik29.pl/notatki`
-
-użyj:
-
-`https://mateusz-spychala.github.io/wyprawa1907/#/notatki`
+Każdy zestaw ma niezależną numerację stron. Nawigacja i postęp są zapisywane oddzielnie dla każdego zestawu.
 
 ---
 
-## 📖 Dziennik 29 Przebudzenie & Dziennik 29 Zapomnienie
+## 🔍 Dostęp do ukrytych stron zagadek
 
-Na stronie Webarchive nie zachowały się żadne strony dotyczące tej książki, dlatego klucze i odpowiedzi zostały pobrane z udostępnionych plików.
+Aby zobaczyć dodatkowe strony związane z zagadkami (np. `/notatki`, `/rozpadlina`), możesz użyć jednego z formatów:
+
+-   `https://mateusz-spychala.github.io/wyprawa1907/#{klucz}`
+-   `https://mateusz-spychala.github.io/wyprawa1907/#/{klucz}`
+
+Dla stron specyficznych dla zestawu, użyj pełnego formatu:
+
+-   `https://mateusz-spychala.github.io/wyprawa1907/#/{zestaw}/{klucz}`
+
+### 🧪 Przykłady
+
+Strony uniwersalne (działają ze wszystkimi zestawami):
+- `https://mateusz-spychala.github.io/wyprawa1907/#/notatki`
+- `https://mateusz-spychala.github.io/wyprawa1907/#/rozpadlina`
+
+Strony specyficzne dla zestawu:
+- `https://mateusz-spychala.github.io/wyprawa1907/#/wyprawa1907_ZakazaneKopalnie/RAZ`
+- `https://mateusz-spychala.github.io/wyprawa1907/#/dziennik29_Przebudzenie/50`
+
+---
+
+## 📖 Dziennik 29 - Przebudzenie, Wersja Pierwsza & Zapomnienie
+
+Na stronie Webarchive nie zachowały się żadne strony dotyczące tych książek, dlatego klucze i odpowiedzi zostały pobrane z udostępnionych plików.
 
 **🚫 Od pytania 64 nie są już dostępne podpowiedzi.**
 
@@ -56,3 +84,38 @@ Część kluczy i odpowiedzi musiała została zmieniona, jednak ich oryginalny 
 -   155: [Dial](https://www.journal29.com/dial/)
 -   157: [Watch](https://www.journal29.com/watch/)
 -   159: [Undergo](https://www.journal29.com/undergo/)
+
+---
+
+## 🛠️ Rozwój lokalny
+
+### Wymagania
+
+- Node.js (wersja 18+)
+- npm
+
+### Instalacja
+
+```bash
+git clone https://github.com/mateusz-spychala/wyprawa1907.git
+cd wyprawa1907
+npm install
+```
+
+### Dostępne komendy
+
+```bash
+npm run dev          # Uruchom serwer deweloperski
+npm run build        # Zbuduj wersję produkcyjną
+npm run preview      # Podgląd buildu produkcyjnego
+npm run deploy       # Wdróż na GitHub Pages
+```
+
+### Stack technologiczny
+
+- **Frontend:** React 19.1 + TypeScript 5.8
+- **Build Tool:** Vite 7.1
+- **Routing:** React Router DOM 7.8 (HashRouter)
+- **State Management:** Zustand 5.0 z Immer
+- **Styling:** SCSS/Sass
+- **Deployment:** GitHub Pages

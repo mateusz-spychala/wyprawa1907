@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 export interface IKey {
 	answer: string;
@@ -33,22 +33,27 @@ interface IGameStore extends IGameData {
 
 export const useGameStore = create<IGameStore>()(
 	devtools(
-		immer((set) => ({
-			...initialState,
-			setKeys: (keys) => {
-				set((draft) => {
-					draft.keys = keys;
-					draft.totalPages = keys.length;
-				});
-			},
-			setValue: (key, value) => {
-				set((draft) => {
-					(draft[key] as typeof value) = value;
-				});
-			},
-			reset: () => {
-				set({ ...initialState });
-			},
-		}))
+		persist(
+			immer((set) => ({
+				...initialState,
+				setKeys: (keys) => {
+					set((draft) => {
+						draft.keys = keys;
+						draft.totalPages = keys.length;
+					});
+				},
+				setValue: (key, value) => {
+					set((draft) => {
+						(draft[key] as typeof value) = value;
+					});
+				},
+				reset: () => {
+					set({ ...initialState });
+				},
+			})),
+			{
+				name: 'wyprawa1907-game-storage',
+			}
+		)
 	)
 );

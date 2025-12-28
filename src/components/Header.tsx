@@ -5,9 +5,10 @@ import type { DatasetName } from '../store/GameStore';
 import { DatasetSelector } from './DatasetSelector';
 
 const DATASET_DISPLAY: Record<DatasetName, { subtitle?: string; showLogo: boolean }> = {
-	dziennik29: { showLogo: true },
-	dziennik29Przebudzenie: { subtitle: 'Przebudzenie', showLogo: false },
-	dziennik29Zapomnienie: { subtitle: 'Zapomnienie', showLogo: false },
+	wyprawa1907_ZakazaneKopalnie: { showLogo: true },
+	dziennik29_Przebudzenie: { subtitle: 'Przebudzenie', showLogo: false },
+	dziennik29_WersjaPierwsza: { subtitle: 'Wersja Pierwsza', showLogo: false },
+	dziennik29_Zapomnienie: { subtitle: 'Zapomnienie', showLogo: false },
 };
 
 const getBrandContent = (dataset: DatasetName) => {

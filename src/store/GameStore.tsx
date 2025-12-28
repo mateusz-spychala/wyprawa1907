@@ -5,11 +5,12 @@ import { devtools } from 'zustand/middleware';
 export interface IKey {
 	answer: string;
 	key: string;
-	tip: string;
+	tip?: string;
+	answerDescription?: string;
 	error?: string;
 }
 
-export type DatasetName = 'dziennik29' | 'dziennik29Przebudzenie' | 'dziennik29Zapomnienie';
+export type DatasetName = 'wyprawa1907_ZakazaneKopalnie' | 'dziennik29_Przebudzenie' | 'dziennik29_WersjaPierwsza' | 'dziennik29_Zapomnienie';
 
 interface IGameData {
 	currentPage: number;
@@ -27,11 +28,12 @@ const initialState: IGameData = {
 	totalPages: 0,
 	result: '',
 	correctAnswer: false,
-	selectedDataset: 'dziennik29',
+	selectedDataset: 'wyprawa1907_ZakazaneKopalnie',
 	datasets: {
-		dziennik29: [],
-		dziennik29Przebudzenie: [],
-		dziennik29Zapomnienie: [],
+		wyprawa1907_ZakazaneKopalnie: [],
+		dziennik29_Przebudzenie: [],
+		dziennik29_WersjaPierwsza: [],
+		dziennik29_Zapomnienie: [],
 	},
 };
 

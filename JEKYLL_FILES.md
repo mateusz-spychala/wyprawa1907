@@ -14,7 +14,7 @@ This document lists all files in the repository that are related to Jekyll.
 - Serves content from the `./dist` directory (which is mounted to `/usr/src/app/wyprawa1907/`)
 - Exposes port 4000 for local development
 
-**Lines 3-9:**
+**Lines 3-9 from docker-compose.yml:**
 ```yaml
 jekyll:
     image: jekyll/jekyll:pages
@@ -25,7 +25,7 @@ jekyll:
         - ./dist:/usr/src/app/wyprawa1907/
 ```
 
-**Note:** There's a discrepancy between the `--source` path (`/usr/src/app/`) and the volume mount point (`/usr/src/app/wyprawa1907/`). The Jekyll server may serve from the parent directory instead of the exact mount point.
+**Note:** There's a discrepancy between the `--source` path (`/usr/src/app/`) and the volume mount point (`/usr/src/app/wyprawa1907/`). The Jekyll server may serve from the parent directory instead of the exact mount point. To fix this, the command could be updated to use `--source /usr/src/app/wyprawa1907/` to match the volume mount point.
 
 ### 2. .gitignore
 **Location:** `/.gitignore`  

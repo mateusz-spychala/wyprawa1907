@@ -14,6 +14,7 @@ function App() {
 					<Route path="/rozpadlina" element={<Rozpadlina />} />
 					<Route path="/notes" element={<Notes />} />
 					<Route path="/notatki" element={<Notes />} />
+					<Route path="/:dataset/:pageId" element={<GamePage />} />
 					<Route path="/:pageId" element={<GamePage />} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Route>

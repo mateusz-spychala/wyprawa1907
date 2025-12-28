@@ -1,12 +1,19 @@
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import whiteLogo from '../assets/whiteLogo.png';
-import dziennik29Data from '../data/dziennik29.json';
-import dziennik29PrzebudzenieData from '../data/dziennik29Przebudzenie.json';
+import { useGameStore } from '../store/GameStore';
+import type { DatasetName } from '../store/GameStore';
+import { DatasetSelector } from './DatasetSelector';
 
-const getBrandContent = (id?: number) => {
-	const dziennik29Length = dziennik29Data.length;
-	const dziennik29PrzebudzenieLength = dziennik29Length + dziennik29PrzebudzenieData.length;
-	if (!id || id < dziennik29Length) {
+const DATASET_DISPLAY: Record<DatasetName, { subtitle?: string; showLogo: boolean }> = {
+	dziennik29: { showLogo: true },
+	dziennik29Przebudzenie: { subtitle: 'Przebudzenie', showLogo: false },
+	dziennik29Zapomnienie: { subtitle: 'Zapomnienie', showLogo: false },
+};
+
+const getBrandContent = (dataset: DatasetName) => {
+	const config = DATASET_DISPLAY[dataset];
+	
+	if (config.showLogo) {
 		return (
 			<>
 				<img src={whiteLogo} alt="Wyprawa 1907 Zakazane Kopalnie" />
@@ -14,7 +21,6 @@ const getBrandContent = (id?: number) => {
 		);
 	}
 
-	const subtitle = id >= dziennik29PrzebudzenieLength ? 'Zapomnienie' : 'Przebudzenie';
 	return (
 		<>
 			<span className="line">
@@ -22,21 +28,21 @@ const getBrandContent = (id?: number) => {
 				<h3>ziennik</h3>
 				<h2>29</h2>
 			</span>
-			<h4 className="subtitle">{subtitle}</h4>
+			<h4 className="subtitle">{config.subtitle}</h4>
 		</>
 	);
 };
 
 const Header = () => {
-	const { pageId } = useParams();
-	const id = Number(pageId);
+	const selectedDataset = useGameStore((state) => state.selectedDataset);
 
 	return (
 		<header className="header">
 			<div className="nav">
-				<Link className="brand" to="/" aria-label="Strona główna">
-					{getBrandContent(isNaN(id) ? undefined : id)}
+				<Link className="brand" to={`/${selectedDataset}/0`} aria-label="Strona główna">
+					{getBrandContent(selectedDataset)}
 				</Link>
+				<DatasetSelector />
 			</div>
 		</header>
 	);

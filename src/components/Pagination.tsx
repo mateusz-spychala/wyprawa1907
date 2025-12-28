@@ -4,6 +4,7 @@ import { useGameStore } from '../store/GameStore';
 const Pagination = () => {
 	const currentPage = useGameStore((state) => state.currentPage);
 	const totalPages = useGameStore((state) => state.totalPages);
+	const selectedDataset = useGameStore((state) => state.selectedDataset);
 	const setValue = useGameStore((state) => state.setValue);
 
 	const maxPages = 7;
@@ -20,7 +21,7 @@ const Pagination = () => {
 		pageLinks.push(
 			<Link
 				key={i}
-				to={`/${i}`}
+				to={`/${selectedDataset}/${i}`}
 				tabIndex={0}
 				aria-label={`Strona ${i}`}
 				className={i === currentPage ? 'active' : ''}
@@ -34,25 +35,38 @@ const Pagination = () => {
 		);
 	}
 
+	const prevPage = Math.max(0, currentPage - 1);
+	const nextPage = Math.min(totalPages - 1, currentPage + 1);
+
 	return (
 		<div className="pagination">
 			<Link
-				to={`/${currentPage - 1}`}
-				className="pagination-prev"
+				to={`/${selectedDataset}/${prevPage}`}
+				className={`pagination-prev ${currentPage === 0 ? 'disabled' : ''}`}
 				aria-label="Poprzednia strona"
-				onClick={() => {
-					if (currentPage > 0) setValue('currentPage', currentPage - 1);
+				aria-disabled={currentPage === 0}
+				onClick={(e) => {
+					if (currentPage === 0) {
+						e.preventDefault();
+						return;
+					}
+					setValue('currentPage', prevPage);
 				}}
 			>
 				«
 			</Link>
 			{pageLinks}
 			<Link
-				to={`/${currentPage + 1}`}
-				className="pagination-next"
+				to={`/${selectedDataset}/${nextPage}`}
+				className={`pagination-next ${currentPage === totalPages - 1 ? 'disabled' : ''}`}
 				aria-label="Nastepna strona"
-				onClick={() => {
-					if (currentPage < totalPages - 1) setValue('currentPage', currentPage + 1);
+				aria-disabled={currentPage === totalPages - 1}
+				onClick={(e) => {
+					if (currentPage === totalPages - 1) {
+						e.preventDefault();
+						return;
+					}
+					setValue('currentPage', nextPage);
 				}}
 			>
 				»

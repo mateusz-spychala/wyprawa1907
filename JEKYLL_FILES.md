@@ -25,12 +25,14 @@ jekyll:
         - ./dist:/usr/src/app/wyprawa1907/
 ```
 
+**Note:** There's a discrepancy between the `--source` path (`/usr/src/app/`) and the volume mount point (`/usr/src/app/wyprawa1907/`). The Jekyll server may serve from the parent directory instead of the exact mount point.
+
 ### 2. .gitignore
 **Location:** `/.gitignore`  
 **Description:** Git ignore configuration that includes Jekyll build output directory.
 
 **Jekyll-related content:**
-- Line 14: `_site` - This is the default output directory where Jekyll builds static site files
+- Contains `_site` entry - This is the default output directory where Jekyll builds static site files
 
 ## Summary
 

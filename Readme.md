@@ -119,3 +119,5 @@ npm run deploy       # Wdróż na GitHub Pages
 - **State Management:** Zustand 5.0 z Immer
 - **Styling:** SCSS/Sass
 - **Deployment:** GitHub Pages
+
+📚 **[Szczegółowa analiza stosu technologicznego →](TECH_STACK.md)**

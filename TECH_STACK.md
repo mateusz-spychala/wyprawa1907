@@ -8,7 +8,7 @@ Wyprawa 1907 is a modern web application built with React and TypeScript, design
 ## 📦 Core Technologies
 
 ### **React 19.1.1**
-Modern JavaScript library for building user interfaces with a component-based architecture. React 19 is the latest major version, offering improved performance and developer experience.
+Modern JavaScript library for building user interfaces with a component-based architecture. This project uses React 19, which offers improved performance and developer experience.
 
 - **Usage**: Core UI framework for building interactive components
 - **Key Features**: Component composition, hooks, virtual DOM, JSX syntax
@@ -162,7 +162,7 @@ wyprawa1907/
 
 1. **Type Safety**: TypeScript with strict mode catches errors at compile time
 2. **Fast Development**: Vite's instant HMR provides immediate feedback
-3. **Modern React**: Latest React 19 features and patterns
+3. **Modern React**: Component-based architecture with hooks and functional patterns
 4. **Responsive Design**: SCSS enables maintainable styling with variables and nesting
 5. **State Management**: Zustand provides simple, scalable state management
 6. **Client-Side Routing**: React Router enables SPA navigation with URL support
@@ -174,7 +174,7 @@ wyprawa1907/
 
 ## 🎯 Technology Choices Rationale
 
-- **React 19**: Latest version provides performance improvements and modern features
+- **React 19**: Provides improved performance, better error handling, and enhanced developer experience
 - **TypeScript**: Ensures code reliability and better developer experience
 - **Vite**: Significantly faster than traditional bundlers like Webpack
 - **Zustand**: Simpler than Redux, less boilerplate than Context API
@@ -192,7 +192,7 @@ wyprawa1907/
 - **Routing**: React Router DOM
 - **State**: Zustand, Immer
 
-### Development Dependencies (12)
+### Development Dependencies (14)
 - **Build**: Vite, @vitejs/plugin-react
 - **Language**: TypeScript, @types/react, @types/react-dom
 - **Linting**: ESLint + 4 plugins
